@@ -1,0 +1,129 @@
+body {
+	background-color: #000000;
+}
+
+a, p, ul.locations {
+	color: #E9D5B3;
+	font-family: Georgia, serif;
+	text-decoration: none;
+	font-size: 12px;
+}
+a:link { color: #E9D5B3; }
+
+a:visited { color: #E9D5B3; }
+
+a:hover { color: #ff4444; }
+
+a:active { color: #ff4444; }
+
+#navcontainer {
+	position: absolute;
+	top: 0px;
+	left: 500px;
+	width: 3in;
+}
+
+#navlist {
+	margin-left: 0;
+	padding-left: 0;
+	list-style-type: none;
+}
+
+#navlist a {
+	text-align: center;
+	margin-top: .25in;
+	margin-left: .35in;
+	display: block;
+	padding: 3px;
+	width: 4in;
+	background-color: #E9D5B3;
+	border: 2px solid #D9C5A3;
+	font-size: 200%;
+	letter-spacing: 2px;
+}
+
+#navlist a:link, #navlist a:visited {
+	color: #000000;
+	text-decoration: none;
+}
+
+#navlist a:hover {
+	background-color: #000000;
+	color: #E9D5B3;
+}
+
+#musiccontainer {
+	width: 4in;
+}
+
+#musiccontainer ul {
+	margin-left: 0;
+	padding-left: 0;
+	list-style-type: none;
+	font-family: Georgia, serif;
+}
+
+#musiccontainer a {
+	display: block;
+	padding: 3px;
+	width: 4in;
+	background-color: #E9D5B3;
+	border: 1px solid #D9C5A3;
+}
+
+#musiccontainer a:link {
+	color: #000000;
+	text-decoration: none;
+}
+
+#musiccontainer a:hover {
+	background-color: #000000;
+	color: #E9D5B3;
+}
+
+table.shows {
+	color: #000000;
+	border: 0px;
+	background-color: #D9C5A3;
+	width: 100%;
+	padding: 10px;
+	spacing: 10px;
+}
+
+td.showheader {
+	color: #000000;
+	background-color: #E9D5B3;
+	text-align: center;
+}
+
+td.showdata {
+	color: #000000;
+	background-color: #E9D5B3;
+	text-align: center;
+}
+
+td.showheader:hover, td.showdata:hover {
+	background-color: $F9E5C3;
+	color: #000000;
+}
+
+b.shows {
+	color:#ff7777;
+}
+
+p.showdata, p.showheader {
+	color: #000000;
+}
+
+#dynamic {
+	margin-left: 32px;
+	width: 4in;
+}
+
+form p { line-height: 24px; }
+form input { float: right; clear: both; width: 70%; }
+form textarea { width: 100%; }
+
+ul.locations { padding-left: 0; padding-top: 20px; }
+ul.locations li { font-size: 1.3em; margin-bottom: 10px; list-style-position: inside; }
+ul.locations li.first { font-weight: bold; list-style-type: none; list-style-position: outside; }

@@ -1,0 +1,36 @@
+/* Reset Stylehseet */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td
+{ margin: 0; padding: 0; border: 0; outline: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; }
+body { line-height: 1; }
+ol, ul { list-style: none; }
+table { border-collapse: separate; border-spacing: 0; }
+caption, th, td { text-align: left; font-weight: normal; }
+blockquote:before, blockquote:after,
+q:before, q:after { content: ""; }
+blockquote, q { quotes: "" ""; }
+
+/* Custom CSS Begins Here */
+body { color: black; background: black; font-family: monospace, serif; }
+#container { text-align: center; }
+img { max-width: 100%; }
+p { background-color: #E9D5B3; font-size: 1.5em; padding: 1%; }
+h1 { color: #000; background-color: #E9D5B3; font-size: 4em; position: absolute; top: 0; left: 0; right: 0; padding: 5%; }
+a { color: #E9D5B3; display: inline-block; margin: 1%; padding: 1%; border: 3px solid #E9D5B3; font-size: 2em; text-decoration: none; }
+a:hover { background-color: #ffe8bf; color: #333; }
+
+#photo { margin: 0 auto; display: block; }
+#player { margin: 1%; }
+
+form { margin: 1%; }
+form label { color: #E9D5B3; display: inline-block; width: 100px; margin-right: 1%; text-align: right; }
+form div { margin: 0.5% 0; }
+form span { color: #E9D5B3; font-size: 1.5em; margin: 1%; }
+form button { background: #000; border: 3px solid #E9D5B3; color: #E9D5B3; font-family: monospace, serif; font-size: 1em; margin: 1%; padding: 1%; }
+form button:hover { background-color: #ffe8bf; color: #333; }

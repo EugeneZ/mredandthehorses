@@ -1,0 +1,65 @@
+<%
+require 'RMagick'
+require 'cgi'
+include Magick
+
+ error = ""
+ seed = rand(99999).to_s
+ dir = '/home/mredandthehorses/mredandthehorses.com/public/'
+ cgi = CGI.new()
+ font = ((t = cgi['posterFont']).empty? ? 'chicken-scratch' : t )
+ size = ((t = cgi['posterFontSize'].to_i).zero? ? 30 : t )
+ rise = ((t = cgi['posterFontRise'].to_i).zero? ? 5 : t )
+ lean = ((t = cgi['posterFontLean'].to_i).zero? ? 5 : t )
+
+ if cgi['action']=="Preview" # generate image
+  poster = ImageList.new(dir + "poster/poster.jpg")
+  text = Draw.new
+  text.font = dir + "fonts/" + font + ".ttf"
+  text.pointsize = size
+  text.gravity = Magick::SouthEastGravity
+  text.fill = "#EAD8B0"
+  text.annotate(poster, 0, 0, lean, rise, cgi['posterMessage']);
+  poster.write(dir + "poster/preview.jpg")
+ end
+ 
+ if cgi['action']=="Save"
+   poster = ImageList.new(dir + "poster/preview.jpg")
+   poster.write(dir + "poster/index-auto.jpg")
+   File.delete(dir + "poster/preview.jpg")
+ end
+%>
+
+<html>
+<head>
+ <title>Mr. Ed and the Horses - Generate Poster</title>
+ <link href="../style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+ <% unless error=="" %>
+   <p>An error occured during processing.</p>
+ <% end %>
+ <form action="make-poster.rhtml?r=<%= seed %>" method="post">
+  <p>Font: <input type="text" name="posterFont" value="<%= font %>"/></p>
+  <p>Size: <input type="text" name="posterFontSize" value="<%= size %>"/></p>
+  <p>Position:
+   rise<input type="text" style="width:50px" name="posterFontRise" value="<%= rise %>"/>
+   lean<input type="text" style="width:50px" name="posterFontLean" value="<%= lean %>"/>
+  </p>
+  <p>You can type '\n' in the message to indicate a line break (move to next line)</p>
+  <p>Message: <input type="text" style="width:200px" name="posterMessage" value="<%= cgi['posterMessage'] %>"/></p>
+  <p>Click the <strong>Preview</strong> button to see a preview of the poster.</p>
+  <p><input type="submit" name="action" value="Preview"/></p>
+ </form>
+ <% if cgi['action']=="Save" %>
+  <p><a href="http://www.mredandthehorses.com/">The image has been saved to the front page. Click here to go there now.</a></p>
+ <% end %>
+ <% if File.exist?(dir + "poster/preview.jpg") %>
+  <p><img src="../poster/preview.jpg?<%= seed %>"/></p>
+ <% end %>
+ <p>Click the <strong>Save</strong> button to save the image to the front page.
+ <form action="make-poster.rhtml" method="post">
+ <p><input type="submit" name="action" value="Save"/></p>
+ </form>
+</body>
+</html>

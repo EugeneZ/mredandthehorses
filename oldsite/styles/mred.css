@@ -1,0 +1,45 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-weight: inherit;
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+body { line-height: 1; color: black; background: black; text-align: center; font-family: Georgia, serif;}
+ol, ul { list-style: none; }
+table { border-collapse: separate; border-spacing: 0; }
+caption, th, td { text-align: left; font-weight: normal; }
+blockquote:before, blockquote:after,
+q:before, q:after { content: ""; }
+blockquote, q { quotes: "" ""; }
+
+#container { margin: 1px auto; width: 1047px; text-align: left; }
+#wrapper { background: url(../images/photobg.jpg) no-repeat; height: 1164px; width: 1047px; position: absolute; }
+#jsEnabled li { display: block; position: absolute; background-repeat: no-repeat; cursor: pointer; }
+#jsEnabled li a { visibility: hidden; }
+#btnVideo { background-image: url(../images/btn_video_24.png); top:576px; left: 126px; width: 536px; height: 536px; z-index: 2; }
+#btnMusic { background-image: url(../images/btn_music_24.png); top:422px; left: 298px; width: 395px; height: 276px; z-index: 4; }
+#btnShows { background-image: url(../images/btn_shows_24.png); top:327px; left: 148px; width: 428px; height: 409px; z-index: 5; }
+#btnContact { background-image: url(../images/btn_contact_24.png); top:278px; left: 660px; width: 163px; height: 530px; z-index: 3; }
+.lightbox { position: absolute;	background-color: #E9D8AD; padding: 20px; opacity: 0; left: 50%; top: 50%; z-index: 9999; text-align: left; border: 1px solid black; }
+
+form p { line-height: 24px; margin: 5px; }
+form input { float: right; clear: both; width: 70%; }
+form textarea { width: 100%; }
+
+ul.locations { margin: 20px; }
+ul.locations li { font-size: 1.3em; margin-bottom: 10px; list-style: circle inside; }
+ul.locations li.first { font-weight: bold; list-style-type: none; list-style-position: outside; }
+
+#flashplayer { margin-top: 20px; }

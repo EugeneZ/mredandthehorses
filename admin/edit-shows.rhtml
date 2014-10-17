@@ -1,0 +1,50 @@
+<%
+require "cgi"
+require "mysql"
+
+db = Mysql.real_connect("db.mredandthehorses.com", "mredandthehorses", "911Fish", "mredandthehorses")
+cgi = CGI.new
+
+if cgi['action']=="Add"
+  db.query("insert into shows(date, venue, time, link, comment) values ('" + cgi['date'] + "','" + cgi['venue'] + "','" + cgi['time'] + "','" + cgi['link'] + "','" + cgi['comment'] + "');")
+end
+
+if cgi['action']=="Delete"
+  db.query("delete from shows where id=" + cgi['id'] + " limit 1;")
+end
+
+shows = db.query("select id, date, venue, time, link, comment from shows order by id;")
+
+%>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../style.css" />
+<title>Shows</title>
+</head>
+<body>
+<% shows.each_hash do |show| %>
+<form action="edit-shows.rhtml" method="post">
+<input type="hidden" name="id" value="<%= show['id'] %>"/>
+<p><b><%= show['date'] %></b></p>
+<p><a href="#" onClick="window.open('<%= show['link'] %>'" ><%= show['venue'] %></a></p>
+<% unless show['comment']=="" %>
+ <p><%= show['comment'] %></p>
+<% end %>
+<p><%= show['time'] %></p>
+<p><input type="submit" name="action" value="Delete"/></p>
+<p>&nbsp;</p>
+</form>
+<% end %>
+<p>&nbsp;</p>
+<p><strong>Add A Show</strong></p>
+<form action="edit-shows.rhtml" method="post">
+<p>Date: <input type="text" name="date"/></p>
+<p>Venue: <input type="text" name="venue"/></p>
+<p>Venue Site: <input type="text" name="link" value="http://"/> This should start with http://</p>
+<p>Extra: <input type="text" name="comment"/> For example, "Benefit Concert"... leave blank if nothing</p>
+<p>Time: <input type="text" name="time"/></p>
+<p><input type="submit" name="action" value="Add"/></p>
+</form>
+<% db.close %>
+</body>
+</html>

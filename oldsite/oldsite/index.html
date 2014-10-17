@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	<title>Mr. Ed And The Horses</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+    
+	<script src="mootools-1.2.4-core.js" type="text/javascript"></script>
+	<script type="text/javascript">
+var MrEd = {
+	frame: 'dynamic',
+	player: 'player',
+	begin: function(){
+		$('navlist').getElements('a').each(function(button){
+			var page = button.get('id').replace('btn','').toLowerCase() + '.php';
+			button.addEvent('click', function(e){
+				if (page && page.length){
+					MrEd.page(page);
+					_gaq.push(['_trackPageview', page]);
+					e.preventDefault();
+				}
+			});
+		});
+	},
+	analytics: function(){
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-2642335-1']);
+		_gaq.push(['_trackPageview']);
+		(function() {
+		  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	},
+	page: function(target) {
+		$(MrEd.frame).load(target).get('load').chain(function(){
+			$$('form').each(function(form){
+				form.set('send', {
+					'onComplete': function(response){ form.set('html', response); }
+				});
+				form.addEvent('submit', function(e){
+					e.stop();
+					this.send();
+				});
+			});
+		});
+	},
+	mp3player: function() {
+		$(MrEd.player).adopt(new Swiff('mp3player.swf', {
+			id: 'flashplayer',
+			width: 400,
+			height: 162,
+			params: {
+				wmode: 'opaque',
+				bgcolor: '#ffffff',
+				majorversion: '7',
+				build: '0'
+			},
+			vars: {
+				file: 'playlist.xml',
+				lightcolor: '0x000000',
+				backcolor: '0xE9D5B3',
+				frontcolor: '0x000000',
+				displayheight: '0',
+				showeq: 'true'
+			}
+		}));
+	}
+};
+MrEd.analytics();
+window.addEvent('domready', MrEd.begin);
+	</script>
+</head>
+<body>
+	<img id="bandpic" src="poster/poster.jpg" />
+	<div id="navcontainer">
+		<ul id="navlist">
+			<li><a href="#" id="btnContact">Contact</a></li>
+			<li><a href="#" id="btnShows">Shows</a></li>
+			<li><a href="#" id="btnMP3Player">Music</a></li>
+			<li><a href="#" id="btnVideo">Video</a></li>
+		</ul>
+		<div id="dynamic"> </div>
+	</div>
+</body>
+</html>
