@@ -16,21 +16,47 @@ blockquote:before, blockquote:after,
 q:before, q:after { content: ""; }
 blockquote, q { quotes: "" ""; }
 
+/* Fonts */
+@font-face {
+    font-family: 'aleoregular';
+    src: url('../fonts/Aleo-Regular-webfont.eot');
+    src: url('../fonts/Aleo-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/Aleo-Regular-webfont.woff') format('woff'),
+    url('../fonts/Aleo-Regular-webfont.ttf') format('truetype'),
+    url('../fonts/Aleo-Regular-webfont.svg#aleoregular') format('svg');
+    font-weight: normal; font-style: normal;
+}
+
 /* Custom CSS Begins Here */
-body { color: black; background: black; font-family: monospace, serif; }
+body { color: black; background: black; font-family: 'aleoregular', serif; }
 #container { text-align: center; }
+#page { max-width: 800px; text-align: left; margin: auto; }
 img { max-width: 100%; }
 p { background-color: #E9D5B3; font-size: 1.5em; padding: 1%; }
-h1 { color: #000; background-color: #E9D5B3; font-size: 4em; position: absolute; top: 0; left: 0; right: 0; padding: 5%; }
+h1 { color: #E9D5B3; background-color: #000; font-size: 4em; position: absolute; top: 0; left: 0; right: 0; padding: 5%; }
+h2 { color: #E9D5B3; font-size: 3em; }
 a { color: #E9D5B3; display: inline-block; margin: 1%; padding: 1%; border: 3px solid #E9D5B3; font-size: 2em; text-decoration: none; }
 a:hover { background-color: #ffe8bf; color: #333; }
 
-#photo { margin: 0 auto; display: block; }
-#player { margin: 1%; }
+#photo { margin: 5em auto; display: block; }
+
+#player { margin: 3em 0; }
+#player .song { border-bottom: 2px solid rgb(220, 208, 192); margin-top: 8em; position: relative; }
+#player .song span { font-size: 1.5em; color: rgb(220, 208, 192); position: relative; bottom: 2em; }
+#player .song button { width: 60px; height: 60px; border-radius: 50%; transition: border-color 0.5s, color 0.5s; border: 4px solid rgba(220, 208, 192, .15); background: rgb(97, 72, 46); position: absolute; bottom: -30px; left: 0; color: rgba(220, 208, 192, .5); cursor: pointer; outline: none; }
+#player .song button:hover { border-color:  rgba(220, 208, 192, .85); color: rgba(220, 208, 192, .85); }
+#player .song button.play .fa.fa-pause { display: none; }
+#player .song button.pause .fa.fa-play { display: none; }
+
+#video .video { position: relative; padding-bottom: 56.25%; /* 16:9 */ padding-top: 25px; height: 0; }
+#video iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
 form { margin: 1%; }
-form label { color: #E9D5B3; display: inline-block; width: 100px; margin-right: 1%; text-align: right; }
+form input, form textarea { width: 100%; font-size: 1.4em; background-color: rgb(220, 208, 192); border-radius: 7px; border: 2px solid rgb(97, 72, 46); padding: 0.75em; font-family: 'aleoregular', serif; }
+form input:focus, form textarea:focus { outline: none; border-color: rgb(240, 228, 212); box-shadow: 0 0 20px rgb(220, 208, 192); }
+form label { color: #E9D5B3; display: inline-block; font-size: 1.4em; padding: 1.25em 0 0.75em 0; }
 form div { margin: 0.5% 0; }
 form span { color: #E9D5B3; font-size: 1.5em; margin: 1%; }
-form button { background: #000; border: 3px solid #E9D5B3; color: #E9D5B3; font-family: monospace, serif; font-size: 1em; margin: 1%; padding: 1%; }
-form button:hover { background-color: #ffe8bf; color: #333; }
+form button { background: rgb(97, 72, 46);  border: 2px solid rgba(220, 208, 192, .15); border-radius: 7px; color: rgb(220, 208, 192); font-size: 1.4em; padding: 0.5em 3em; transition: border-color 0.5s; font-family: 'aleoregular', serif; margin: 1em; cursor: pointer;}
+form button:hover { border-color: rgba(220, 208, 192, .85); }
+.button_wrapper { text-align: center; }
